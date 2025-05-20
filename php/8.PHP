@@ -1,3 +1,27 @@
+<?php
+session_start();
+
+if (isset($_POST['email'])) {
+
+    $email = "admin@gmail.com";
+    $password = "admin";
+    if (
+        $_POST['email'] == $email and
+        $_POST['password']  == "$password"
+    ) {
+        $_SESSION["email"] = $email;
+        header("location:9.php");
+    } else {
+        header("location:8.php?login=error");
+    }
+}
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +43,22 @@
                                 Login Form
                             </div>
                             <div class="card-body">
+                                <?php if (isset($_GET['access'])) : ?>
+                                    <div class="alert alert-warning" role="alert">
+                                        Ups!!!, anda harus login terlebih dahulu
+                                    </div>
+
+                                <?php endif ?>
+
+                                <?php if (isset($_GET['login'])) : ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        Mohon periksa kembali email dan password anda !!
+                                    </div>
+                                <?php endif ?>
+
+                                <div class="alert alert-primary" role="alert">
+                                    A simple primary alert—check it out!
+                                </div>
                                 <form action="" method="post">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Email</label>

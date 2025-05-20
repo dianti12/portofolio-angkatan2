@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if (empty($_SESSION['email'])) {
+    header("location:8.php?access=failed");
+}
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +53,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="user.php">User</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="keluar.php">Keluar</a>
+                            </li>
+
+
+
                         </ul>
                     </div>
                 </div>
@@ -54,7 +73,21 @@
                             <div class="card-header">
                                 Dashboard
                             </div>
-                            <div class="card-body"></div>
+                            <div class="card-body">
+                                <div align="right">
+                                    <h6>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">
+                                                <?php echo isset($_SESSION['email']) ? $_SESSION['email'] : '' ?>
+                                            </a>
+                                        </li>
+
+                                    </h6>
+                                </div>
+
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
